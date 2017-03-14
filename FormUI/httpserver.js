@@ -3,6 +3,7 @@ var app = express();
 var fs = require('fs');
 //var ejs = require('ejs');
 
+
 app.set('host', '127.0.0.1');//定义全局变量
 app.set('port', 600);//定义全局变量
 
