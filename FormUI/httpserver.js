@@ -1,13 +1,13 @@
 ﻿var express = require('express');
 var app = express();
 var fs = require('fs');
-var ejs = require('ejs');
+//var ejs = require('ejs');
 
 app.set('host', '127.0.0.1');//定义全局变量
 app.set('port', 600);//定义全局变量
 
-ap.engine('.html', ejs, __express);
-app.set('view engine', 'html');
+//ap.engine('.html', ejs, __express);
+//app.set('view engine', 'html');
 
 app.get('/form', function (req, res) {
     res.status(200).sendFile(__dirname + '/Client/Views/form.html');// success
