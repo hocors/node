@@ -1,21 +1,35 @@
-﻿var express = require('express');
-var app = express();
+﻿var app = require('express')();
 var fs = require('fs');
+var handlebars = require('express-handlebars').create({
+    extname: 'html',
+    defaultLayout: 'main',
+    layoutsDir: __dirname + '/Client/Views'
+});
 
+app.engine('html', handlebars.engine);
+app.set('view engine', 'html');
 
 app.set('host', '127.0.0.1');//定义全局变量
 app.set('port', 600);//定义全局变量
 
 app.get('/form', function (req, res) {
-    res.status(200).sendFile(__dirname + '/Client/Views/form.html');// success
-    //res.status(200).render(__dirname + '/Client/Views/form.html', function (err, html) {
-    //    res.send(html);
-    //});
+    res.status(200).sendFile(__dirname + '/Client/Views/form.html');//success
+});
+
+app.get('/index', function (req, res) {
+    res.status(200).render(__dirname + '/Client/Views/index', { info: '测试模板文件' }, function (err, html) {
+        if (err) {
+            res.type('text/plain').status(500).send('页面被程序猿吃了！');
+        }
+        else {
+            res.send(html);
+        }
+    });
 });
 
 app.use(function (req, res) {
     res.type('text/plain');
-    res.status(404);
+    res.status(200);
     res.send('页面被程序猿吃了！');
 });
 
