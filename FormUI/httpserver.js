@@ -54,6 +54,12 @@ app.get('/index', function (req, res) {
     page.render(req, res, '/Views/index', resContext);
 });
 
+app.get('/login', function (req, res) {
+    resContext['title'] = '登录页面';
+    resContext['info'] = '登录页面';
+    page.render(req, res, '/Views/login', resContext);
+});
+
 app.get('/', function (req, res) {
     resContext['title'] = '我的nodejs学习计划';
     resContext['info'] = 'hello world ';
